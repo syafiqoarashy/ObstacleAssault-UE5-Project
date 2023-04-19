@@ -27,7 +27,7 @@ void AMovingPlatform::BeginPlay()
 void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-    
+	
     MovePlatform(DeltaTime);
     RotatePlatform(DeltaTime);
 }
@@ -55,12 +55,12 @@ void AMovingPlatform::RotatePlatform(float DeltaTime)
     UE_LOG(LogTemp, Display, TEXT("%s Rotating..."), *GetName());
 }
 
-bool AMovingPlatform::ShouldPlatformReturn()
+bool AMovingPlatform::ShouldPlatformReturn() const
 {
 	return GetDistanceMoved() > MoveDistance;
 }
 
-float AMovingPlatform::GetDistanceMoved()
+float AMovingPlatform::GetDistanceMoved() const
 {
 	return FVector::Dist(StartLocation, GetActorLocation());
 }
